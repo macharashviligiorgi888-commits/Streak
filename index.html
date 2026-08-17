@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Streak 🔥</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(circle at center,
+        #35100b 0%,
+        #120505 45%,
+        #050505 100%);
+
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+.container {
+    text-align: center;
+    z-index: 10;
+
+    animation: appear 1.5s ease;
+}
+
+.fire {
+    font-size: 120px;
+
+    animation:
+        firePulse 0.8s infinite alternate,
+        shake 3s infinite;
+
+    filter:
+        drop-shadow(0 0 20px #ff4d00)
+        drop-shadow(0 0 50px #ff1800);
+}
+
+h1 {
+    font-size: clamp(38px, 10vw, 70px);
+
+    margin: 10px 0;
+
+    color: #ff5a16;
+
+    text-shadow:
+        0 0 10px #ff4d00,
+        0 0 30px #ff2200,
+        0 0 60px #ff0000;
+}
+
+h2 {
+    font-size: clamp(25px, 7vw, 45px);
+
+    margin: 10px;
+
+    animation: glow 1s infinite alternate;
+}
+
+p {
+    font-size: 20px;
+
+    opacity: 0.8;
+}
+
+.particle {
+    position: absolute;
+
+    pointer-events: none;
+
+    animation: fly linear forwards;
+}
+
+@keyframes firePulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.18);
+    }
+}
+
+@keyframes shake {
+
+    0%, 90%, 100% {
+        rotate: 0deg;
+    }
+
+    92% {
+        rotate: -5deg;
+    }
+
+    94% {
+        rotate: 5deg;
+    }
+
+    96% {
+        rotate: -3deg;
+    }
+}
+
+@keyframes glow {
+
+    from {
+        text-shadow: 0 0 10px #ff4d00;
+    }
+
+    to {
+        text-shadow:
+            0 0 20px #ff4d00,
+            0 0 50px #ff2200;
+    }
+}
+
+@keyframes fly {
+
+    from {
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(-110vh)
+            scale(0.2)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+@keyframes appear {
+
+    from {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="fire">🔥</div>
+
+    <h1>STREAK ACTIVATED!</h1>
+
+    <h2>❤️ Streak ანთე! ❤️</h2>
+
+    <p>ახლა შენც უნდა გამომიგზავნო 😆🔥</p>
+
+</div>
+
+<script>
+
+function createParticle() {
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    const things = [
+        "🔥",
+        "❤️",
+        "✨",
+        "🔥",
+        "💥"
+    ];
+
+    particle.innerHTML =
+        things[Math.floor(Math.random() * things.length)];
+
+    particle.style.left =
+        Math.random() * 100 + "vw";
+
+    particle.style.top =
+        (100 + Math.random() * 20) + "vh";
+
+    particle.style.fontSize =
+        (20 + Math.random() * 35) + "px";
+
+    particle.style.animationDuration =
+        (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(particle);
+
+    setTimeout(() => {
+        particle.remove();
+    }, 7000);
+}
+
+setInterval(createParticle, 180);
+
+</script>
+
+</body>
+</html>
